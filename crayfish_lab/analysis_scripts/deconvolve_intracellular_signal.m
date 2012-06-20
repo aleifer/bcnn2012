@@ -11,8 +11,8 @@ extra = d(1,:); % from nerve
 highpass_time = 10; %seconds
 a = time_per_point/highpass_time;
 
-pad_length = 1e6;
-intra_padded = padarray(intra,pad_length);
+pad_length = 1e5;
+intra_padded = [zeros(1,pad_length) intra zeros(1,pad_length)];
 intra_highpass = filter([1-a a-1],[1 a-1],intra);
 intra_highpass = intra_highpass(pad_length+1:end-pad_length);
 
