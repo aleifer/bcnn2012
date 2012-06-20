@@ -11,10 +11,12 @@ extra = d(1,:); % from nerve
 highpass_time = 10; %seconds
 a = time_per_point/highpass_time;
 
-pad_length = 1e5;
-intra_padded = [zeros(1,pad_length) intra zeros(1,pad_length)];
-intra_highpass = filter([1-a a-1],[1 a-1],intra);
-intra_highpass = intra_highpass(pad_length+1:end-pad_length);
+pad_length = 1e7;
+offset = mean(intra);
+intra_padded = [ones(1,pad_length)*offset intra ones(1,pad_length)*offset];
+intra_highpass_0 = filter([1-a a-1],[1 a-1],intra_padded);
+intra_highpass = intra_highpass_0(pad_length+1:end-pad_length);
 
 
-figure(1); plot(t,intra,t,intra_highpass);
+figure(1); plot(t,intra_highpass);
+xlim([200,201]); ylim('auto');
