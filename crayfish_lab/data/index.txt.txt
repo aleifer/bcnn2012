@@ -1,0 +1,12 @@
+Wednesday 20 June 2012
+
+12620003.abf
+First simultaneous extracellular recording of n3 nerve + intracellular recording of 1st muscle
+This one has lots of activity in the intracellular recording
+
+
+
+12620004.abf
+Simulataneous but this time from a 2nd muscle
+Starts at -67mV. The muscle recordings looks really sparce and clean.
+
