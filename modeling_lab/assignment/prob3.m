@@ -26,3 +26,5 @@ hold on;
 plot(bincenters,lambda.*exp(-lambda*bincenters).*binwidth,'r')
 title('PDF of Inter Spike Interval Cell 1 Train Spikes')
 xlim([0 .4])
+text(.2,.05, ['\lambda=' num2str(mean(diff(s))) ', var=' num2str(var(diff(s)))]);
+    
