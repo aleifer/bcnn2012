@@ -1,3 +1,14 @@
+% A craniotamy was performed to access the right brain of a blowfly, and
+% horizontal motion was presented to the left eye of the blowfly.  Motion
+% associated with the H1 neuron should produce a signal for
+% backward->forward motion near the left eye, which corresponds to a
+% positive velocity in our convention.  The first 6 data files correspond
+% to first presenting flies with forward stimuli, and then presenting them
+% with reverse stimuli.  The rate is decreased monotonically (and roughly
+% linearly) from run to run.  The final run corresponds to switching the
+% order in which stimuli are presented.
+
+
 %% Collect electrical recording data and store in MATLAB structure
 
 % all of these runs have the same stimulus pattern with varying drum
