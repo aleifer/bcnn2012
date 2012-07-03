@@ -1,0 +1,102 @@
+Wednesday 20 June 2012
+
+12620003.abf
+First simultaneous extracellular recording of n3 nerve + intracellular recording of 1st muscle
+This one has lots of activity in the intracellular recording
+
+
+
+12620004.abf
+Simulataneous but this time from a 2nd muscle
+Starts at -67mV. The muscle recordings looks really sparce and clean.
+
+12621005.abf
+5 stimulations 6 seconds apart. 1 ms pulse. 10 V intoi crayfish.
+
+12621006.abf
+a few stimulations 3 seconds apart. 1 ms pulse. 10 V intoi crayfish.
+
+12621007.abf
+a few stimulations 1 seconds apart. 1 ms pulse. 10 V intoi crayfish.
+
+
+12621008.abf
+1/2 seconds apart. 1 ms pulse. 10 V intoi crayfish.
+
+
+12621009.abf
+200ms apart. 1 ms pulse. 10 V intoi crayfish.
+
+
+12621010.abf
+100ms apart. 1 ms pulse. 10 V intoi crayfish.
+
+12621011.abf
+50ms apart. 1 ms pulse. 10 V intoi crayfish.
+
+
+-- rat brain slice data--
+12621011.abf
+5 second interval, 0.1 ms pulse width, 45 volt height. P13 pups.
+
+12625003.abf
+tetanus experiment: 100 Hz pulses for 1 second, with baseline measurements before and after.
+
+--- Day 2---
+
+Andy here. This is our second slice of the day
+12626034.abf
+Baseline. for The statistics file 12625000.sta from time 105860 s to 
+OK. I'm ignoring that baseline. Because I feel like I had better bumps at the beginning.
+
+
+
+
+12626039.abf is now our baseline.
+12626042.ab is the post conditioning baseline. I see no evidence of LPT. However, everything is nice and reasonably situated around baseline.
+
+whole cell rec,rests @ -60, shitty Rs....
+stopwatch time 111922 is start of whole cell epsp stats baseline, rec# 12626045.abf
+
+12626046 conditioning, 5x100 Hz @ 1 sec, 20 sec intervals
+
+12626047 potentiations?!
+ 
+
+--- Fly Stuff (first fly day)----
+2nd July 2012 Monday
+12702000.abf
+Baseline Recordings from H1. 400ms forward and backward with blurry stripe stimulus. This was a good run at first but later ont eh signal dirfts in and out. I will add more salijne.  voltage on drum (proportional to speed) was 9.5 V.
+
+12702001.abf
+Much better baseline recording. (same as above but better)
+
+12702002.abf
+changed drum velocity to 7.5 V (forward and backwards)
+
+12702003.abf
+changed drum velocity to 5.5 V (forward and backwards)
+
+12702004.abf
+changed drum velocity to 3.5 V (forward and backwards)
+
+12702005.abf
+changed drum velocity to 1.5 V (forward and backwards)
+
+12702006.abf
+changed drum velocity to 0.5 V (forward and backwards)
+
+12702007.abf
+changed drum velocity to -0.5 V (effectively switching forward and backwards).  likely due to mechanical threshold for movement not being surpassed.
+
+12702008.abf
+changed drum velocity to -1.5 V (effectively switching forward and backwards)
+
+
+12702009.abf
+changed drum velocity to -2.5 V (effectively switching forward and backwards)
+
+12702010.abf
+drum velocity at 9.5 V again.  changed visual pattern to spatial chirp (roughly 1 cm to 1 mm pitch).  Chirp superperiod roughly 30 times the single run period.
+
+
