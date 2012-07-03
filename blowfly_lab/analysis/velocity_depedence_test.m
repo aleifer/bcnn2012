@@ -77,17 +77,25 @@ for i=1:length(data)
     data(i).avgForwardRate=mean(data(i).forwardRate);
     data(i).avgReverseRate=mean(data(i).reverseRate);
     
+    data(i).stdBaselineRate=std(data(i).baselineRate);
+    data(i).stdForwardRate=std(data(i).forwardRate);
+    data(i).stdReverseRate=std(data(i).reverseRate);
+    
+    
+    
 end
 
 %Plot the velocity dependence
 
-figure; plot([data.velocity],[data.avgBaselineRate],...
-    [data.velocity],[data.avgForwardRate],...
-[data.velocity],[data.avgReverseRate]);
+figure; 
+hold on;
+errorbar([data.velocity],[data.avgBaselineRate],[data.stdBaselineRate],'xb');
+errorbar([data.velocity],[data.avgForwardRate],[data.stdForwardRate],'xg');
+errorbar([data.velocity],[data.avgReverseRate],[data.stdReverseRate],'xr');
 
 title('Firing rate dependence on velocity')
 xlabel('Voltage to Drum')
 ylabel('Firing Rate (Spikes per s)')
 legend('Baseline','Forward Motion','Reverse Motion')
 
-    
+
