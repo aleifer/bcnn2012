@@ -76,16 +76,49 @@ for i=1:length(spikes)
     spikes_per_bin(j) = spikes_per_bin(j)+1;
 end
 
-rate_centers = min(spikes_per_bin):max(spikes_per_bin);
-p_rate = hist( spikes_per_bin, rate_centers); %distribution of rates
+%Rates are quantized into 14 bins of integer spike rate values
+rate_edges = min(spikes_per_bin):max(spikes_per_bin);
+p_rate = histc( spikes_per_bin, rate_edges); %distribution of rates
 p_rate = p_rate/length(spikes_per_bin); % normalize
 
 
-[p_z z_centers] = hist(z,200); % distribution of z-values
+% We quantized z values into 200 bins
+z_edges=linspace(min(z),max(z),200);
+p_z = histc(z,z_edges); % distribution of z-values
 p_z = p_z/length(z); %normalize
+
+% Now we need to find the joind distribution.
+
+% We need to run through the time bins of our training data and fill up the joint matrix that
+% counts the number of instances of a given spike rate for a given z value.
+
+[~,quantizedSpikeRt_indx_eachBin]=histc(spikes_per_bin,rate_edges); %Note: we are ignoring zero padding, which is OK
+[~,quantizedZ_indx_eachBin]=histc(z,z_edges);
+    
+
+%initialize the joint distribution
+joint_z_spikeRt=zeros(length(rate_edges),length(z_edges));
+
+for k=1:length(spikes_per_bin)
+    temp=joint_z_spikeRt(quantizedSpikeRt_indx_eachBin(k),quantizedZ_indx_eachBin(k));
+    joint_z_spikeRt(quantizedSpikeRt_indx_eachBin(k),quantizedZ_indx_eachBin(k))=temp+1;  
+end
+
+%Our joint distribution of spike rates and z values in a matrix in rows and
+%columns where the rows correspond to indices of spik rates, and the colums
+%correspond to indices of z values, as quantized by their respective
+%vectors.
+joint_z_spikeRt=joint_z_spikeRt./length(spikes_per_bin); %normalize by dividing by number of bins in the simulation
+
+
+assert(false)
+
+
+
 
 p_z_given_spikes = hist(z_spikes,z_centers); % distribution of z values conditional on spiking
 p_z_given_spikes = p_z_given_spikes / length(z_spikes); % normalize
+
 
 p_spike_given_z = get_p_spike_given_z(z_centers, p_z, p_z_given_spikes, p_spike); % use Bayes' rule to find p_spike_given_z
 
