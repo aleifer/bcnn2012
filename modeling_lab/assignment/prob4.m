@@ -122,6 +122,13 @@ for k=1:size(joint_z_spikeRt,2)
  p_r_z(:,k)=joint_z_spikeRt(:,k)./p_z(k); 
 end
 
+
+%image conditional probability
+if DEBUG
+    figure; imagesc(p_r_z);
+end
+
+
 assert(false)
 
 
@@ -159,12 +166,6 @@ spikesPerTime = zeros(length(spikeEvents),length(bins));
 for k=1:length(spikeEvents)
     spikesPerTime(k,:)= histc(spikeEvents{k},bins);
 end
-
-%Plot the conditional probability
-if DEBUG
-   figure; imagesc(p_r_z)
-end
-
 
 spike_rate = interp1(z_centers, p_spike_given_z, z);
 
