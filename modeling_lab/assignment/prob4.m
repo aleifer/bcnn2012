@@ -10,7 +10,7 @@ load('../data/stim_long_1hr.mat')
 stim=s;
 clear s;
 
-cell_number = 1; % 1-3 for the different data sets
+cell_number = 3; % 1-3 for the different data sets
 %Load in spike times for cell 1 of training
 load(['../data/cell' num2str(cell_number) '_train_spks.mat'])
 spikes=s;
