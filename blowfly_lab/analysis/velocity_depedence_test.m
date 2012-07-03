@@ -58,7 +58,14 @@ for i=1:length(data)
         data{i}.forwardRate(j) = numberForward/range(timeForward);
         data{i}.reverseRate(j) = numberReverse/range(timeReverse);
     end
+    
+    %So far we had gotten rates for the individual forward/back sweeps in
+    %each run. Now let's aggregate all the sweeps in a given run and get
+    %statistics on that.
+    data{i}.avgBaselineRate=mean(data{i}.baselineRate);
+    data{i}.avgForwardRate=mean(data{i}.forwardRate);
+    data{i}.avgReverseRate=mean(data{i}.reverseRate);
+    
 end
 
-    
     
