@@ -183,4 +183,4 @@ plot(expectedRate,'r');
 err=avgTestSpikeRate(1:end-1)-expectedRate;
 E=1-sum(err.^2)/sum(avgTestSpikeRate.^2);
 
-disp(['Percentage of the varience is ' num2str(E)]
+disp(['Percentage of the varience is ' num2str(E)])
