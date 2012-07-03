@@ -178,3 +178,9 @@ plot(avgTestSpikeRate,'b');
 hold on;
 plot(expectedRate,'r');
 %Wow it works!
+
+%% Calculate the perecentage of the variance
+err=avgTestSpikeRate(1:end-1)-expectedRate;
+E=1-sum(err.^2)/sum(avgTestSpikeRate.^2);
+
+disp(['Percentage of the varience is ' num2str(E)]
