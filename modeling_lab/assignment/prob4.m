@@ -87,7 +87,7 @@ z_edges=linspace(min(z),max(z),200);
 p_z = histc(z,z_edges); % distribution of z-values
 p_z = p_z/length(z); %normalize
 
-% Now we need to find the joind distribution.
+%% find the joind distribution.
 
 % We need to run through the time bins of our training data and fill up the joint matrix that
 % counts the number of instances of a given spike rate for a given z value.
@@ -122,23 +122,14 @@ for k=1:size(joint_z_spikeRt,2)
  p_r_z(:,k)=joint_z_spikeRt(:,k)./p_z(k); 
 end
 
+%replace NaN's with zeros
+p_r_z(isnan(p_r_z))=0;
+
 
 %image conditional probability
 if DEBUG
     figure; imagesc(p_r_z);
 end
-
-
-assert(false)
-
-
-
-
-p_z_given_spikes = hist(z_spikes,z_centers); % distribution of z values conditional on spiking
-p_z_given_spikes = p_z_given_spikes / length(z_spikes); % normalize
-
-
-p_spike_given_z = get_p_spike_given_z(z_centers, p_z, p_z_given_spikes, p_spike); % use Bayes' rule to find p_spike_given_z
 
 
 %% Testing how well our LN model works [Problem 6]
@@ -167,10 +158,23 @@ for k=1:length(spikeEvents)
     spikesPerTime(k,:)= histc(spikeEvents{k},bins);
 end
 
-spike_rate = interp1(z_centers, p_spike_given_z, z);
+
+avgTestSpikeRate=mean(spikesPerTime);
 
 %Load stimulus data
 LOAD_DATA = load(['../data/stim_repeat_30s.mat']);
 test_stimulus = LOAD_DATA.s;
 z_stim = get_z(STA, test_stimulus);
+[~,z_stim_quantized_indx]=histc(z_stim,z_edges);
 
+%Find expected spike rate for the test z data
+expectedRate=zeros(size(z_stim));
+for k=1:length(z_stim)
+   expectedRate(k)=dot( p_r_z(:,z_stim_quantized_indx(k)) , rate_edges);
+end
+
+figure;
+plot(avgTestSpikeRate,'b');
+hold on;
+plot(expectedRate,'r');
+%Wow it works!
