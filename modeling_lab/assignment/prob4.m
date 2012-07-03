@@ -1,7 +1,7 @@
 %Andrew Leifer
 %leifer@princeton.edu
 %With Vivek Venkatachalam
-
+DEBUG=false;
 
 %% Load Data
 
@@ -111,6 +111,17 @@ end
 joint_z_spikeRt=joint_z_spikeRt./length(spikes_per_bin); %normalize by dividing by number of bins in the simulation
 
 
+%To get the probability of a rate given z, divide every column of the joint
+%distribution by the probability of that z
+%(each column should sum to one) (each column represents the distribution
+%of spike rates for a given z value)
+
+
+%probability of r given z
+for k=1:size(joint_z_spikeRt,2)
+ p_r_z(:,k)=joint_z_spikeRt(:,k)./p_z(k); 
+end
+
 assert(false)
 
 
@@ -148,6 +159,12 @@ spikesPerTime = zeros(length(spikeEvents),length(bins));
 for k=1:length(spikeEvents)
     spikesPerTime(k,:)= histc(spikeEvents{k},bins);
 end
+
+%Plot the conditional probability
+if DEBUG
+   figure; imagesc(p_r_z)
+end
+
 
 spike_rate = interp1(z_centers, p_spike_given_z, z);
 
