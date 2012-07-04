@@ -100,3 +100,19 @@ changed drum velocity to -2.5 V (effectively switching forward and backwards)
 drum velocity at 9.5 V again.  changed visual pattern to spatial chirp (roughly 1 cm to 1 mm pitch).  Chirp superperiod roughly 30 times the single run period.
 
 
+
+
+===Blowfly Day 3==
+w/ Frederico, Vivek and Andy
+12704000.abf
+10 second sweep, 1 increasing vertically-sized stripe band on gray background. 
+Sounds pretty good.
+
+1204001.abf
+same as before, but this time there are 2 horizontal stripes that increase vertically as you go across horizontally (and the vertical sum of the stripe has the same area as the previous stripe)
+
+1204002.abf
+same as before, but this time there are 3 horizontal stripes that increase vertically as you go across horizontally (and the vertical sum of the stripe has the same area as the previous stripe)
+
+1204003.abf
+Control run with 1 stripe. Same as 12704000.
