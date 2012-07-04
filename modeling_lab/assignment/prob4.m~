@@ -173,18 +173,18 @@ expectedRate=zeros(size(z_stim));
 for k=1:length(z_stim)
    expectedRate(k)=dot( p_r_z(:,z_stim_quantized_indx(k)) , rate_edges);
 end
-err=avgTestSpikeRate(1:end-1)-expectedRate;
-E=1-sum(err.^2)/sum(avgTestSpikeRate.^2);
+
 figure;
 plot(avgTestSpikeRate,'b');
 hold on;
 plot(expectedRate,'r');
-title({['Data Rate (blue) vs, Predicted Rate (red) for cell' num2str(cell_number) '.'];[ 'Percentage of the variance is ' num2str(E)]});
+title(['Data Rate (blue) vs, Predicted Rate (red) for cell' num2str(cell_number) '. Percentage']);
 xlabel('Time (ms)')
 ylabel('Rate');
 %Wow it works!
 
 %% Calculate the perecentage of the variance
+err=avgTestSpikeRate(1:end-1)-expectedRate;
+E=1-sum(err.^2)/sum(avgTestSpikeRate.^2);
 
-
-
+disp(['Percentage of the varience is ' num2str(E)])
