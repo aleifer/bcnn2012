@@ -11,16 +11,16 @@ stripeDesc{2}='2 horizontal stripes that increase vertically as you go across ho
 stripeDesc{3}='3 horizontal stripes that increase vertically as you go across horizontally (and the vertical sum of the stripe has the same area as the previous stripe)';
 
 
-recording(1).file = '../Data/12704000.abf';
+recording(1).file = '../Data/1204000.abf';
 recording(1).stripeID = 1; 
 
-recording(2).file = '../Data/12704001.abf';
+recording(2).file = '../Data/1204001.abf';
 recording(2).stripeID = 2; 
 
-recording(3).file = '../Data/12704002.abf';
+recording(3).file = '../Data/1204002.abf';
 recording(3).stripeID = 3; 
 
 for i=1:length(recording)
     [d si h] = abfload(recording(i).file);
-    data{i}=d;
+    data(i)=
 end

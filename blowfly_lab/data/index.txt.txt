@@ -103,7 +103,13 @@ drum velocity at 9.5 V again.  changed visual pattern to spatial chirp (roughly 
 
 
 ===Blowfly Day 3==
-w/ Frederico, Vivek and Andy
+w/ Frederico, Vivek, Andy, Simachew
+
+Note that the "forward" (H1 direction) corresponds to increasing amplitude spatial envelope
+9V for 950 sec
+0V for 950 sec
+-9V for 950 sec
+
 12704000.abf
 10 second sweep, 1 increasing vertically-sized stripe band on gray background. 
 Sounds pretty good.
@@ -115,4 +121,4 @@ same as before, but this time there are 2 horizontal stripes that increase verti
 same as before, but this time there are 3 horizontal stripes that increase vertically as you go across horizontally (and the vertical sum of the stripe has the same area as the previous stripe)
 
 1204003.abf
-Control run with 1 stripe. Same as 12704000.
+Control run with 1 stripe,
