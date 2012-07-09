@@ -1,31 +1,40 @@
-function generateVidStim(angle, cyclespersecond, f, drawmask, ...
-    xcenter, ycenter, gaussian_sigma, movieDurationSecs)
+function generateVidStim(xcenter, ycenter, gaussian_sigma,...
+    movieDurationSecs, angle, cyclespersecond, f)
 % This is a script that generates 
 % Adapted from DriftDemo* functions in Psychtoolbox
 
 
-gratingsize = 400;
+gratingsize = 600; % always make a large gratingsize
+drawmask = 1; %mask the grating size with a circular gaussian of size
 
-if nargin < 4
-    drawmask = [];
-end
-
-if isempty(drawmask)
-    % By default, we mask the grating by a gaussian transparency mask:
-    drawmask=1;
-end;
 
 if nargin < 3
     f = [];
 end
 
-if isempty(f)
+if nargin < 7
     % Grating cycles/pixel: By default 0.05 cycles per pixel.
     f=0.05;
 end;
 
-if nargin < 2
+if nargin < 6
     cyclespersecond = [];
+end
+
+if nargin < 5
+    angle = 180;
+end
+
+if nargin < 4
+    movieDurationSecs = 20;
+end
+
+if nargin < 3
+    gaussian_sigma = 50;
+end
+
+if nargin == 0
+    [xcenter ycenter] = [100 100];
 end
 
 if isempty(cyclespersecond)
