@@ -3,7 +3,6 @@ function generateVidStim(xcenter, ycenter, gaussian_sigma,...
 % This is a script that generates 
 % Adapted from DriftDemo* functions in Psychtoolbox
 
-
 gratingsize = 600; % always make a large gratingsize
 drawmask = 1; %mask the grating size with a circular gaussian of size
 
@@ -75,23 +74,16 @@ try
 	% functions WhiteIndex and BlackIndex:
 	white=WhiteIndex(screenNumber);
 	black=BlackIndex(screenNumber);
-    
-    % Round gray to integral number, to avoid roundoff artifacts with some
-    % graphics cards:
-	gray=round((white+black)/2);
 
-    % This makes sure that on floating point framebuffers we still get a
-    % well defined gray. It isn't strictly neccessary in this demo:
-    if gray == white
-		gray=white / 2;
-    end
-    
     % Contrast 'inc'rement range for given white and gray values:
-	inc=white-gray;
+	inc=white/2;
 
     % Open a double buffered fullscreen window and set default background
-	% color to gray:
-	[w screenRect]=Screen('OpenWindow',screenNumber, black);
+	% color to black:
+    Screen('Preference','VisualDebuglevel',3)
+   [w screenRect]=Screen('OpenWindow',screenNumber, black);
+
+        
     
     if drawmask
         % Enable alpha blending for proper combination of the gaussian aperture
@@ -127,7 +119,7 @@ try
     x = meshgrid(-texsize:texsize + p, 1);
     
     % Compute actual cosine grating:
-    grating=gray + inc*cos(fr*x);
+    grating=(black+white)/2 + inc*cos(fr*x);
 
     % Store 1-D single row grating in texture:
     gratingtex=Screen('MakeTexture', w, grating);
@@ -257,8 +249,9 @@ try
     if ~isEndBlack
         Screen('CloseAll'); %close screens, terminate properly
     else
-        mask=ones(2*texsize+1, 2*texsize+1, 2) * black;
-        Screen('MakeTexture', w, mask);
+        Screen('Close',masktex);
+        Screen('Close',gratingtex);
+        Screen(w, 'Flip');
     end
 
 catch
