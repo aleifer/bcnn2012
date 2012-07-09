@@ -100,3 +100,89 @@ changed drum velocity to -2.5 V (effectively switching forward and backwards)
 drum velocity at 9.5 V again.  changed visual pattern to spatial chirp (roughly 1 cm to 1 mm pitch).  Chirp superperiod roughly 30 times the single run period.
 
 
+
+
+===Blowfly Day 3==
+w/ Frederico, Vivek, Andy, Simachew
+
+Note that the "forward" (H1 direction) corresponds to increasing amplitude spatial envelope
+9V for 950 sec
+0V for 950 sec
+-9V for 950 sec
+
+12704000.abf
+Stripe ID 1
+10 second sweep, 1 increasing vertically-sized stripe band on gray background. 
+Sounds pretty good.
+
+12704001.abf
+same as before, but this time there are 2 horizontal stripes that increase vertically as you go across horizontally (and the vertical sum of the stripe has the same area as the previous stripe)
+
+12704002.abf
+same as before, but this time there are 3 horizontal stripes that increase vertically as you go across horizontally (and the vertical sum of the stripe has the same area as the previous stripe)
+
+12704003.abf
+Stipe ID 4. Sinusoidal intensity black and white, full vertical envelope.
+
+12704004.abf
+Stipe ID 5. Sinusoidal intensity black and white, ~50% vertical envelope
+
+TOSS OUT 12704005.abf
+
+NOte we are doing 2 minutes per recording.
+
+12704006.abf
+Stipe ID 6. Sinusoidal intensity black and white, ~33% vertical envelope
+
+12704007.abf
+Stripe ID7. Sinusoidal intensity black and white, ~25% vertical envelope
+
+
+12704008.abf
+Stripe ID8. Sinusoidal intensity black and white, ~25% vertical envelope. Sitting on bottom.
+
+12704009.abf
+Stripe ID9. Sinusoidal intensity black and white, ~25% vertical envelope. Sitting in middle
+
+12704010.abf
+Stripe ID10. Sinusoidal intensity black and white, ~25% vertical envelope. Sitting towards top.
+
+
+12704011.abf
+Control. Stripe ID4. Sinusoidal intensity black and white, ~100% vertical envelope. 
+
+
+12704012.abf TOSSING OUT
+
+**Decreasing stripe envelope
+
+12704013.abf
+Stripe ID 21. 1 increasing vertically-sized striped envelope band on gray background. The stripe decreases in size in the H1 direction.
+
+12704014.abf
+Stripe ID 22. 2 increasing vertically-sized striped envelopes on gray background. The stripe decreases in size in the H1 direction.
+
+
+12704015.abf
+Stripe ID 23. 3 increasing vertically-sized striped envelopes on gray background. The stripe decreases in size in the H1 direction.
+
+12704016.abf
+Control. Stripe ID 21 again. Increasing vertically-sized striped envelopes on gray background. The stripe decreases in size in the H1 direction. This is a control of 12704014.abf
+
+
+** Stripe hieght Jumps
+
+
+12704017.abf
+ Stripe ID 12. Alternating presenting stripes at lower and upper segemnts of visual fields. The stripes move in the h1 direction. 25% stripe heights. And sinusoid intensity in the horizontal direction. Two full periods being presented per revolution.
+
+12704018.abf
+ Stripe ID 12. Alternating presenting stripes at lower and upper segemnts of visual fields. The stripes move in the h1 direction. 25% stripe heights. And sinusoid intensity in the horizontal direction. Two full periods being presented per revolution.
+
+
+12704019.abf
+ Stripe ID 13. Alternating presenting stripes at bottom and second to bottom segemnts of visual fields. The stripes move in the h1 direction. 25% stripe heights. And sinusoid intensity in the horizontal direction. Two full periods being presented per revolution.
+
+
+12704020.abf
+ Stripe ID 13 again. Alternating presenting stripes at bottom and second to bottom segemnts of visual fields. The stripes move in the h1 direction. 25% stripe heights. And sinusoid intensity in the horizontal direction. Two full periods being presented per revolution.
