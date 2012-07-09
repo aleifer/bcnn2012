@@ -21,7 +21,7 @@ screenHeight=1024;
 
 %Stim duration (in seconds)
 stimDuration=10;
-pauseDuration=10;
+pauseDuration=7;
 
 %Number of repetations per unique stimuli
 numReps=1;
@@ -154,5 +154,12 @@ if DEBUG
  figure; imagesc(M);
 end
 
+%Get a random number for the 
+S=rng(1389057);
+p = randperm(numStimuli);
 
 
+for k=1:numStimuli
+    disp(['Applying stimuli ' num2str(k) ' of ' num2str(numStimuli) ' corresponding to row ' num2str(p(k)) '.']);
+    M(p(k),1)
+end
