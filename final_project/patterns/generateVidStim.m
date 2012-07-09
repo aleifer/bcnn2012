@@ -1,5 +1,5 @@
 function generateVidStim(xcenter, ycenter, gaussian_sigma,...
-    movieDurationSecs, angle, cyclespersecond, f)
+    movieDurationSecs, angle, cyclespersecond, f, isEndBlack)
 % This is a script that generates 
 % Adapted from DriftDemo* functions in Psychtoolbox
 
@@ -10,6 +10,10 @@ drawmask = 1; %mask the grating size with a circular gaussian of size
 
 if nargin < 3
     f = [];
+end
+
+if nargin < 8
+    isEndBlack = 0; % terminate with black screen.
 end
 
 if nargin < 7
@@ -87,7 +91,7 @@ try
 
     % Open a double buffered fullscreen window and set default background
 	% color to gray:
-	[w screenRect]=Screen('OpenWindow',screenNumber, gray);
+	[w screenRect]=Screen('OpenWindow',screenNumber, black);
     
     if drawmask
         % Enable alpha blending for proper combination of the gaussian aperture
@@ -135,9 +139,9 @@ try
     %
     % We create a  two-layer texture: One unused luminance channel which we
     % just fill with the same color as the background color of the screen
-    % 'gray'. The transparency (aka alpha) channel is filled with a
+    % 'black'. The transparency (aka alpha) channel is filled with a
     % gaussian (exp()) aperture mask:
-    mask=ones(2*texsize+1, 2*texsize+1, 2) * gray;
+    mask=ones(2*texsize+1, 2*texsize+1, 2) * black;
     [x,y]=meshgrid(-1*texsize:1*texsize,-1*texsize:1*texsize);
     mask(:, :, 2)=white * (1 - exp(-((x/gaussian_sigma).^2)-((y/gaussian_sigma).^2)));
     masktex=Screen('MakeTexture', w, mask);
@@ -249,7 +253,13 @@ try
 	
 	%The same commands wich close onscreen and offscreen windows also close
 	%textures.
-	Screen('CloseAll');
+	
+    if ~isEndBlack
+        Screen('CloseAll'); %close screens, terminate properly
+    else
+        mask=ones(2*texsize+1, 2*texsize+1, 2) * black;
+        Screen('MakeTexture', w, mask);
+    end
 
 catch
     %this "catch" section executes in case of an error in the "try" section
