@@ -43,6 +43,14 @@ thetaBase=180;
 %Chose velocity for theta tuning curve
 velBase=5;
 
+
+
+%Other Parameters for the grating
+spatialFreq=.05; %cycles/pixel
+gaussianSigma=50; %Size of grating mask
+isEndBlack=1; %Add blacmk scren at end
+
+
 %%%%%%%%%%%%%%
 %%%%%%%%%%%%%% Code
 %%%%%%%%%%%%%%
@@ -84,17 +92,67 @@ end
 
 
 
+
+
+%Total number of stimuli (including repetations & spatial variations)
+bigN=numStimuli*numReps; 
+
 %Define a matrix for all unique stimuli in an arbitrary order
 % Each column will correspond to a parameter for the stimuli
 % Each row will be a unique stimuli
 
-M=[];
+%The columns correspond to:
+% xcenter, ycenter, gaussian_sigma,..
+%    movieDurationSecs, angle, cyclespersecond, f, isEndBlack
+numcols=8;
+VELCOL=6;
+XCOL=1;
+YCOL=2;
+THETACOL=5;
+SIGMACOL=3;
+DURATIONCOL=4;
+SPATIALFREQCOL=7;
+ISENDBLACKCOL=8;
+
+M=zeros([bigN numcols]);
+
+M(:,SIGMACOL)= gaussianSigma;
+M(:,DURATIONCOL)=stimDuration;
+M(:,SPATIALFREQCOL)= spatialFreq;
+M(:,ISENDBLACKCOL)=isEndBlack;
+
+
+row=1;
+%Generate velocity tuning curve stimuli (theta is constant)
+for v=velPoints
+    for k=1:numSquares
+      
+        M(row,VELCOL)=v; %Set the velocity
+        M(row,THETACOL)=thetaBase;
+        M(row,XCOL)=xcntrs(k);
+        M(row,YCOL)=ycntrs(k);
+        row=row+1;
+
+    end
+end
+
 
 %Generate velocity tuning curve stimuli (theta is constant)
+for theta=thetaPoints
+    for k=1:numSquares
+      
+        M(row,VELCOL)=velBase; %Set the velocity
+        M(row,THETACOL)=theta;
+        M(row,XCOL)=xcntrs(k);
+        M(row,YCOL)=ycntrs(k);
+        row=row+1;
 
-
-for k=1:numSquares
-    
+    end
 end
+
+if DEBUG
+ figure; imagesc(M);
+end
+
 
 
