@@ -180,7 +180,6 @@ fprintf(fid,'%6.3f %6.3f %6.3f %6.3f %6.3f %6.3f %6.3f %6.3f %s\r\n',...
 %
 % Strip 5: sine pattern, max contrast, increase in vertical size
 %
-BarHeight=BarHeight/2;
 Lambda=NBars/(2*NPeriods); % Lambda is now expressed in LW units
 Contrast=1;
 ZeroLev=0.5;
