@@ -1,7 +1,7 @@
 function outputBeeps(n)
 % This sends a number to the audio jack encoded as a binary signal of 
 % Where 1 is one, and 0 is one/hafl..
-DEBUG=true;
+DEBUG=false;
 
 Fs = 2000;      % Samples per second
 nSeconds = 2;   % Duration of the sound
