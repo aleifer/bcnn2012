@@ -81,7 +81,7 @@ try
 
     % Open a double buffered fullscreen window and set default background
 	% color to black:
-    Screen('Preference','VisualDebuglevel',3)
+    Screen('Preference','VisualDebuglevel',3);
    [w screenRect]=Screen('OpenWindow',screenNumber, black);
 
         

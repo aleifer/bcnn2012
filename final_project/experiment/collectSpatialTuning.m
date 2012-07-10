@@ -161,10 +161,9 @@ p = randperm(numStimuli);
 
 
 for k=1:numStimuli
+    outputBeeps(numStimuli);
     disp(['Applying stimuli ' num2str(k) ' of ' num2str(numStimuli) ' corresponding to row ' num2str(p(k)) '.']);
     M(p(k),1)
     generateVidStim(M(p(k),1),M(p(k),2),M(p(k),3),M(p(k),4),M(p(k),5),M(p(k),6),M(p(k),7));
-    pause(pauseDuration/2);
-   % outputBeeps(numStimuli);
-    pause(pauseDuration/2);
+    pause(pauseDuration);
 end
