@@ -37,7 +37,8 @@ if nargin < 3
 end
 
 if nargin == 0
-    [xcenter ycenter] = [100 100];
+    xcenter = 100;
+    ycenter = 100;
 end
 
 if isempty(cyclespersecond)
