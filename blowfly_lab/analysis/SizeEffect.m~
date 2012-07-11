@@ -1,6 +1,7 @@
 %% Data Loading 
 
 Data=abfload('../Data/12704000.abf');
+Id='0';
 DrumPos=Data(:,1,:);
 H1Volt=Data(:,2,:);
 TraialNum=size(Data,3);
@@ -12,8 +13,8 @@ H1Volt(H1Volt>-0.03)=0;
 H1Volt=abs(H1Volt);
 TimeBinNum=100;
 
-SpikeTimeAv=zeros(1,TimeBinNum);
-c=0;
+
+c=1;
 for i=1:TraialNum
 	DrumPosSm=smooth(DrumPos(:,i),1000);
     [~,DrumPeakTrig]=findpeaks(DrumPosSm,'minpeakheight',5);
@@ -27,16 +28,25 @@ for i=1:TraialNum
     
     Bins=DrumPeakTrig(j):TimeBin:DrumPeakTrig(j+1);
     
-    SpikeDist=histc(SpikeTime,Bins);
-    SpikeTimeAv=SpikeTimeAv+SpikeDist(:,1:TimeBinNum);
+    SpikeDist(c,:)=histc(SpikeTime,Bins);
+    
     c=c+1;
     end
 
 
 
 end
+SpikeDist
 
-SpikeTimeAv=SpikeTimeAv./c;
-
+name=(['H1SizeEff' Id]);
+save(name,'SpikeDist');
+SpikeTimeAv=mean(SpikeDist(:,1:100));
+SpikeTimeVar=std(SpikeDist(:,1:100));
 figure;
-plot(SpikeTimeAv);
+plot(SpikeTimeAv,'r','LineWidth',2);
+hold on;
+Err=SpikeTimeAv-SpikeTimeVar;
+plot(Err,'--r','LineWidth',1);
+Err=SpikeTimeAv+SpikeTimeVar;
+plot(Err,'--r','LineWidth',1);
+hold off;
