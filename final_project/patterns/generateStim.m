@@ -1,14 +1,11 @@
 function generateStim(xcenter, ycenter, angle,...
-    cyclespersecond, movieDurationSecs, f, whiteFraction, gaussian_sigma)
+    cyclespersecond, movieDurationSecs, f, whiteFraction)
 % This is a script that generates 
 % Adapted from DriftDemo* functions in Psychtoolbox
 
 gratingsize = 600; % always make a large gratingsize
 drawmask = 1; %mask the grating size with a circular gaussian of size
 
-if nargin < 8
-    gaussian_sigma = 500; % size of hole
-end
 
 if nargin < 7
     whiteFraction = 0.5;

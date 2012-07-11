@@ -15,7 +15,7 @@ addpath('../patterns');
 
 %Parameters
 
-DEBUG=true;
+DEBUG=false;
 
 %Stim duration (in seconds)
 stimDuration=10;
@@ -24,8 +24,6 @@ pauseDuration=7;
 %Number of repetations per unique stimuli
 numReps=1;
 
-%How Many Locations (square root of?)
-sqrtNumSquares=4;
 
 %Velocity stimuli space
 velBounds=[0 10];
@@ -42,18 +40,17 @@ thetaBase=180;
 velBase=5;
 
 
-
 %Other Parameters for the grating
-spatialFreq=.05; %cycles/pixel
-gaussianSigma=50; %Size of grating mask
-isEndBlack=1; %Add blacmk scren at end
+spatialFreq=.02; %cycles/pixel
 
+%Fraction of the pattern that is white
+whiteFraction = 0.5;
 
 %%%%%%%%%%%%%%
 %%%%%%%%%%%%%% Code
 %%%%%%%%%%%%%%
 
-numSquares=sqrtNumSquares^2;
+numSquares=4;
 
 %Breakout the stimuli space
 thetaNumSteps=length(thetaPoints);
@@ -74,19 +71,9 @@ disp(['Entire experiment (including pauses) should take ' num2str(totalExpDurati
 
 
 %Find the center's of a checkerboard numSquares by numSquares 
-n=(1:2:(sqrtNumSquares*2)); %Don't know why this works, but it does.
-xcntrs=repmat(n.* screenWidth./(2*length(n)),...
-    [sqrtNumSquares 1]);
-ycntrs=repmat([n.* screenHeight./(2*length(n))]',...
-    [1 sqrtNumSquares]);
-if DEBUG
-    figure;
-        plot(screenWidth,screenHeight,'^r');
-    hold on;
-    plot(xcntrs,ycntrs,'o');
-    xlim([0 screenWidth])
-    ylim([0 screenHeight])
-end
+xcntrs=[1 2 1 2];
+ycntrs = [1 1 2 2];
+
 
 
 
@@ -102,22 +89,17 @@ bigN=numStimuli*numReps;
 %The columns correspond to:
 % xcenter, ycenter, gaussian_sigma,..
 %    movieDurationSecs, angle, cyclespersecond, f, isEndBlack
-numcols=8;
-VELCOL=6;
+numcols=7;
+VELCOL=4;
 XCOL=1;
 YCOL=2;
-THETACOL=5;
-SIGMACOL=3;
-DURATIONCOL=4;
-SPATIALFREQCOL=7;
-ISENDBLACKCOL=8;
+THETACOL=3;
+DURATIONCOL=5;
+SPATIALFREQCOL=6;
+WHITECOL = 7;
 
-M=zeros([bigN numcols]);
 
-M(:,SIGMACOL)= gaussianSigma;
-M(:,DURATIONCOL)=stimDuration;
-M(:,SPATIALFREQCOL)= spatialFreq;
-M(:,ISENDBLACKCOL)=isEndBlack;
+clear M;
 
 
 row=1;
@@ -125,10 +107,13 @@ row=1;
 for v=velPoints
     for k=1:numSquares
       
-        M(row,VELCOL)=v; %Set the velocity
-        M(row,THETACOL)=thetaBase;
-        M(row,XCOL)=xcntrs(k);
-        M(row,YCOL)=ycntrs(k);
+        M{row,VELCOL}=v; %Set the velocity
+        M{row,THETACOL}=thetaBase;
+        M{row,XCOL}=xcntrs(k);
+        M{row,YCOL}=ycntrs(k);
+        M{row,DURATIONCOL}=stimDuration;
+        M{row,SPATIALFREQCOL}= spatialFreq;
+        M{row,WHITECOL}=whiteFraction;
         row=row+1;
 
     end
@@ -139,14 +124,19 @@ end
 for theta=thetaPoints
     for k=1:numSquares
       
-        M(row,VELCOL)=velBase; %Set the velocity
-        M(row,THETACOL)=theta;
-        M(row,XCOL)=xcntrs(k);
-        M(row,YCOL)=ycntrs(k);
+        M{row,VELCOL}=velBase; %Set the velocity
+        M{row,THETACOL}=theta;
+        M{row,XCOL}=xcntrs(k);
+        M{row,YCOL}=ycntrs(k);
+        M{row,DURATIONCOL}=stimDuration;
+        M{row,SPATIALFREQCOL}= spatialFreq;
+        M{row,WHITECOL}=whiteFraction;
         row=row+1;
 
     end
 end
+
+
 
 if DEBUG
  figure; imagesc(M);
@@ -161,6 +151,6 @@ for k=1:numStimuli
     outputBeeps(numStimuli);
     disp(['Applying stimuli ' num2str(k) ' of ' num2str(numStimuli) ' corresponding to row ' num2str(p(k)) '.']);
     M(p(k),1)
-    generateVidStim(M(p(k),1),M(p(k),2),M(p(k),3),M(p(k),4),M(p(k),5),M(p(k),6),M(p(k),7));
+    generateStim(M{p(k),:});
     pause(pauseDuration);
 end
