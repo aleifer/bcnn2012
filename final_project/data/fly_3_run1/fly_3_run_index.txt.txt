@@ -1,0 +1,8 @@
+random seed= 1389058
+Git Hash: ca10e4e
+
+This was the 5 position tuning curve stimuli. 125 files.
+This neuron seems to respond to vertical stimuli.
+~6:30pm - 7:41pm
+
+Wednesday 12 July 2012
