@@ -46,7 +46,7 @@ for j=1:length(g)
 
 end
 
-hist(zz)
+histfit(zz, length(zz)*2)
 
 
 
