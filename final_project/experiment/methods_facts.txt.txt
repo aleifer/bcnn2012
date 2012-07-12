@@ -1,0 +1,10 @@
+Screen: Dell 1704FPV1 Color LCD Display
+Screen size: 1280 x 1024 px; 13.3'' x 10.6''
+screen refresh rate = 75 Hz
+Screen Pixel Area = (.264 mm ).^2
+screen brightness & contrast =  black= 2.3 uW/ cm^2   white = 38 uW/ cm^2
+contrast ratio= ~20
+psychtoolbox versio = 64 bit 3.0.10 
+tungstan electrode= FHC tungsten Microeletrode 37 mm PK/ 12
+
+Stimuli information
