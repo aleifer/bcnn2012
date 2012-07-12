@@ -24,21 +24,19 @@ pauseDuration=7;
 %Number of repetations per unique stimuli
 numReps=1;
 
-
 %Velocity stimuli space
 velBounds=[0 10];
 velNumSteps=15;
 
 %Angle stimuli space
 thetaPoints=[180 185 175 190 170  270 90 315 45 0];
-
+thetaPoints=[0:45:315];
 
 %Chose theta for the velocity tuning curve
-thetaBase=180;
+thetaBase=90;
 
 %Chose velocity for theta tuning curve
 velBase=5;
-
 
 %Other Parameters for the grating
 spatialFreq=.02; %cycles/pixel
@@ -50,7 +48,6 @@ whiteFraction = 0.5;
 %%%%%%%%%%%%%% Code
 %%%%%%%%%%%%%%
 
-numSquares=9;
 
 %Breakout the stimuli space
 thetaNumSteps=length(thetaPoints);
@@ -59,7 +56,7 @@ velPoints=linspace(velBounds(1),velBounds(2),velNumSteps);
 %Calculate the number of unique stimuli
 % (Note here are assumption is that we will explore angle dependence at a
 % constat velocity, and velocity dependence at a constant angle)
-
+numSquares = 5;
 numStimuli=(thetaNumSteps+ velNumSteps)*numSquares;
 totalStimDuration=stimDuration.*numStimuli*numReps;
 totalExpDuration=(stimDuration+pauseDuration).*numStimuli*numReps;
@@ -71,8 +68,9 @@ disp(['Entire experiment (including pauses) should take ' num2str(totalExpDurati
 
 
 %Find the center's of a checkerboard numSquares by numSquares 
-xcntrs=[1 1.5 2 1 1.5 2 1 1.5 2];
-ycntrs = [1 1 1 1.5 1.5 1.5 2 2 2];
+xcntrs=[1 2 1 2 1.5];
+ycntrs = [1 1 2 2 1.5];
+numSquares=length(xcntrs);
 
 
 
@@ -143,7 +141,7 @@ if DEBUG
 end
 
 %Get a random number for the 
-S=rng(1389057);
+S=rng(1389058);
 p = randperm(numStimuli);
 
 

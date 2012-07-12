@@ -50,7 +50,7 @@ whiteFraction = 0.5;
 %%%%%%%%%%%%%% Code
 %%%%%%%%%%%%%%
 
-numSquares=4;
+numSquares=9;
 
 %Breakout the stimuli space
 thetaNumSteps=length(thetaPoints);
@@ -71,8 +71,8 @@ disp(['Entire experiment (including pauses) should take ' num2str(totalExpDurati
 
 
 %Find the center's of a checkerboard numSquares by numSquares 
-xcntrs=[1 2 1 2];
-ycntrs = [1 1 2 2];
+xcntrs=[1 1.5 2 1 1.5 2 1 1.5 2];
+ycntrs = [1 1 1 1.5 1.5 1.5 2 2 2];
 
 
 
@@ -148,7 +148,7 @@ p = randperm(numStimuli);
 
 
 for k=1:numStimuli
-    outputBeeps(numStimuli);
+    outputBeeps(p(k));
     disp(['Applying stimuli ' num2str(k) ' of ' num2str(numStimuli) ' corresponding to row ' num2str(p(k)) '.']);
     M(p(k),1)
     generateStim(M{p(k),:});
