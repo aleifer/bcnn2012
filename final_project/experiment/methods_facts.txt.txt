@@ -2,9 +2,19 @@ Screen: Dell 1704FPV1 Color LCD Display
 Screen size: 1280 x 1024 px; 13.3'' x 10.6''
 screen refresh rate = 75 Hz
 Screen Pixel Area = (.264 mm ).^2
+distanceFromScreen=3 to 7 cm
 screen brightness & contrast =  black= 2.3 uW/ cm^2   white = 38 uW/ cm^2
 contrast ratio= ~20
 psychtoolbox versio = 64 bit 3.0.10 
 tungstan electrode= FHC tungsten Microeletrode 37 mm PK/ 12
 
+
 Stimuli information
+pixels / sec
+cyclesl / pixel = v
+width of bars on screen
+radius of window
+
+spatial frequency is fixed within a day
+first day was cosine grating with gaussian window
+second day was black and white grating
