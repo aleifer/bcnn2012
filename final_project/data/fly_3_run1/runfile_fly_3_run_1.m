@@ -30,10 +30,11 @@ velNumSteps=15;
 
 %Angle stimuli space
 thetaPoints=[180 185 175 190 170  270 90 315 45 0];
-thetaPoints=[0:45:315];
+%thetaPoints=[0:45:315];  INTENDED TO USE THIS STIMULUS, FAILED
 
 %Chose theta for the velocity tuning curve
-thetaBase=90;
+thetaBase = 180;
+%thetaBase=90; INTENDED TO USE THIS STIMULUS, FAILED
 
 %Chose velocity for theta tuning curve
 velBase=5;

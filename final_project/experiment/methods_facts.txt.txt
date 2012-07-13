@@ -13,8 +13,8 @@ Stimuli information
 pixels / sec
 cyclesl / pixel = v
 width of bars on screen
-radius of window
+radius of window = 7.25 cm
 
 spatial frequency is fixed within a day
-first day was cosine grating with gaussian window
-second day was black and white grating
+first day was cosine grating with gaussian window [no data used]
+second day was black and white grating [both runs]

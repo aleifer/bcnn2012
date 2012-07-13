@@ -24,6 +24,7 @@ spatialFreq=.02; %cycles/pixel
 
 for i=1:length(folders)
     cd(folders(i).directory);
+    clear M;
     load('../rundata'); % puts the correct M in the workspace
         % M{:,1} = x-coords
         % M{:,2} = y-coords
@@ -32,24 +33,28 @@ for i=1:length(folders)
         % M{:,5} = duration of stimulus
         % M{:,6} = spatial frequency cycles/pixel
         % M{:,7} = white fraction (0 to 1)
+        data = struct([]);
     for j=1:length(folders(i).runs)
         fileToRead = [num2str(folders(i).runs(j)) '.atf'];
         if ~exist(fileToRead,'file')
             disp(['missing file ' fileToRead])
         else
-            DELIMITER = '\t';
-            HEADERLINES = 10;
-            newData = importdata(fileToRead, DELIMITER, HEADERLINES);
-            audioTag = newData.data(:,3);
-            dataIndex = getIndexFromAudio(audioTag);
+             DELIMITER = '\t';
+             HEADERLINES = 10;
+             newData = importdata(fileToRead, DELIMITER, HEADERLINES);
+             audioTag = newData.data(:,3);
+             dataIndex = getIndexFromAudio(audioTag);
             
             data(dataIndex).x = M{dataIndex,1};
             data(dataIndex).y = M{dataIndex,2};
             data(dataIndex).theta = M{dataIndex,3};
             data(dataIndex).vpixel = M{dataIndex,4}/spatialFreq;
             
-            data(dataIndex).t = newData.data(:,1);
-            data(dataIndex).voltage = newData.data(:,2);
+             data(dataIndex).t = newData.data(:,1);
+             data(dataIndex).voltage = newData.data(:,2);
+             
+             data(dataIndex).runNumber = j; % linear counter for run
+              counter(j) = dataIndex;
         end
     end
     save('../data','data');
